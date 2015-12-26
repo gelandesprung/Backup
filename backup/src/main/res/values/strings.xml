@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Backup</string>
+    <string name="action_settings">设置</string>
+    <string name="title_activity_main">备份</string>
+    <string name="code">x</string>
+    <string name="settings">设置</string>
+    <string name="service_flag">服务器: </string>
+    <string name="user_name">用户名： </string>
+    <string name="password">密码： </string>
+    <string name="save">保存</string>
+    <string name="backup_tag">开始备份</string>
+    <string name="saveto">保存到</string>
+</resources>
