@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 
+project.archivesBaseName = "Backup"
 
 android {
     compileSdkVersion 23
@@ -17,27 +18,29 @@ android {
         }
     }
 
+
     defaultConfig {
         applicationId "com.daodao.yanchao.backup"
         minSdkVersion 17
         targetSdkVersion 23
     }
+
     signingConfigs {
-        ruixinConfig {
+        myConfig {
             storeFile file('Document.keystore')
-            storePassword "goodluck4839"
+            storePassword System.console().readLine("\nKeystore password: ")
             keyAlias "yanchao"
-            keyPassword "goodluck4839"
+            keyPassword System.console().readLine("\nKey password: ")
         }
     }
 
     buildTypes {
-        debug{
+        debug {
             applicationIdSuffix 'debug'
         }
         release {
             minifyEnabled false
-            signingConfig signingConfigs.ruixinConfig
+            signingConfig signingConfigs.myConfig
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -45,7 +48,7 @@ android {
         variant.outputs.each { output ->
             def outputFile = output.outputFile
             if (outputFile != null && outputFile.name.endsWith('.apk')) {
-                def fileName = output.outputFile.name.replace(".apk", "-${defaultConfig.versionName}.apk")
+                def fileName = output.outputFile.name.replace(".apk", "-v${defaultConfig.versionName}.apk")
 //                def fileName = "Backup-${defaultConfig.versionName}-${new Date().format("yyyyMMdd", TimeZone.getTimeZone("UTC"))}.apk"
                 output.outputFile = new File(outputFile.parent, fileName)
                 copy {
@@ -68,5 +71,4 @@ dependencies {
 //    compile 'com.daimajia.numberprogressbar:library:1.2@aar'
     compile 'com.mikhaellopez:circularprogressbar:1.0.1'
 }
-
 
