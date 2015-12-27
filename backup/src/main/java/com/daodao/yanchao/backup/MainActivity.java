@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
                             ServerConfig config = null;
                             try {
                                 config = dbUtils.findFirst(ServerConfig.class);
-                                config.localdir=Environment.getExternalStorageDirectory() + "/DCIM";
+
                             } catch ( DbException e ) {
                                 e.printStackTrace();
                             }
@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
                                 if ( progressbar.hasOnClickListeners() ) {
                                     progressbar.setOnClickListener(null);
                                 }
+                                config.localdir = Environment.getExternalStorageDirectory() + "/DCIM";
                                 upload(config);
                             }
                         }
